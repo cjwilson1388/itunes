@@ -20,7 +20,8 @@ app.controller('mainCtrl', function($scope, itunesService){
         {field: 'AlbumArt', displayName: 'Album Art', width: '110px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><img src="{{row.getProperty(col.field)}}"></div>'},
         {field: 'Type', displayName: 'Type'},
         {field: 'CollectionPrice', displayName: 'Collection Price'},
-        {field: 'trackViewUrl', displayName: 'Buy it on iTunes'},
+        {field: 'trackViewUrl', displayName: 'Buy it on iTunes', cellTemplate: '<a ng-class="col.colInex()" href="{{row.getProperty(col.field)}}" target="_blank">View in iTunes</a>'},
+
       ]
   };
 
@@ -43,7 +44,7 @@ app.controller('mainCtrl', function($scope, itunesService){
               this.CollectionPrice = CollectionPrice;
               this.Play = Play;
               this.Song = Song;
-              this.trackViewUrl = '<a href=' + '"' + trackViewUrl + '"' + '> View in iTunes </a>';
+              this.trackViewUrl = trackViewUrl;
             }
           for (var i = 0; i < data.length; i++) {
             var entry = new Entry(data[i].artistName, data[i].collectionName, data[i].artworkUrl100, data[i].kind, data[i].collectionPrice, data[i].previewUrl, data[i].trackName, data[i].trackViewUrl)
